@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第三方组件使用说明 - 口袋朗读</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background-color: #f5f5f7;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 32px;
+            color: #1d1d1f;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 24px;
+            color: #1d1d1f;
+            margin-top: 32px;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #0071e3;
+        }
+
+        .meta {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .intro {
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin-bottom: 16px;
+            text-align: justify;
+        }
+
+        strong {
+            color: #1d1d1f;
+            font-weight: 600;
+        }
+
+        ul, ol {
+            margin-left: 24px;
+            margin-bottom: 16px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        a {
+            color: #0071e3;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .component-card {
+            background-color: #f9f9f9;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #0071e3;
+        }
+
+        .component-card ul {
+            margin-top: 12px;
+            margin-left: 20px;
+        }
+
+        .component-card li {
+            list-style-type: none;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .component-card li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #0071e3;
+            font-weight: bold;
+        }
+
+        .note {
+            background-color: #e8f4fd;
+            padding: 16px;
+            border-left: 4px solid #0071e3;
+            margin-top: 20px;
+            border-radius: 4px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+
+            .component-card {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>第三方组件使用说明</h1>
+        <div class="meta">
+            <p><strong>更新日期</strong>：2025年12月14日</p>
+            <p><strong>生效日期</strong>：2025年12月14日</p>
+        </div>
+
+        <div class="intro">
+            <p>本应用「口袋朗读」使用以下第三方组件或系统库。除标注说明外，所有组件均在本地运行。</p>
+        </div>
+
+        <h2>一、AVSpeechSynthesizer（系统自带 TTS 组件）</h2>
+        <div class="component-card">
+            <ul>
+                <li><strong>提供方</strong>：Apple Inc.</li>
+                <li><strong>用途</strong>：离线语音播报词语内容</li>
+                <li><strong>联网情况</strong>：不联网，不采集任何数据</li>
+            </ul>
+        </div>
+
+        <h2>二、MarkdownUI（Markdown 渲染库）</h2>
+        <div class="component-card">
+            <ul>
+                <li><strong>提供方</strong>：Guille Gonzalez (<a href="https://github.com/gonzalezreal" target="_blank">@gonzalezreal</a>)</li>
+                <li><strong>开源许可</strong>：MIT License</li>
+                <li><strong>项目地址</strong>：<a href="https://github.com/gonzalezreal/swift-markdown-ui" target="_blank">https://github.com/gonzalezreal/swift-markdown-ui</a></li>
+                <li><strong>版本</strong>：2.0.2+</li>
+                <li><strong>用途</strong>：在应用内以结构化方式显示隐私政策、用户协议等文档内容，提升可读性</li>
+                <li><strong>联网情况</strong>：不联网，纯本地文本渲染，不采集任何数据</li>
+                <li><strong>说明</strong>：该组件仅用于格式化显示应用内的文档文本（如标题、段落、列表等），所有处理均在设备本地完成</li>
+            </ul>
+        </div>
+
+        <h2>三、StoreKit（App评分框架）</h2>
+        <div class="component-card">
+            <ul>
+                <li><strong>提供方</strong>：Apple Inc.</li>
+                <li><strong>用途</strong>：提供App评分功能，允许用户向Apple App Store提交评分</li>
+                <li><strong>联网情况</strong>：需要连接到Apple App Store，仅在用户主动点击评分按钮时启用</li>
+                <li><strong>数据收集</strong>：Apple可能会收集与评分相关的信息（如设备信息、App版本等）</li>
+                <li><strong>隐私政策</strong>：<a href="https://www.apple.com/legal/privacy/" target="_blank">Apple隐私政策</a></li>
+                <li><strong>说明</strong>：该功能完全可选，用户可以选择不使用评分功能，核心功能不受影响</li>
+            </ul>
+        </div>
+
+        <h2>四、其他说明</h2>
+        <div class="note">
+            <ul>
+                <li>本应用未接入任何广告、统计或分析 SDK。</li>
+                <li>除StoreKit评分功能外，所有其他第三方组件均在本地执行，不会与外部服务器通信。</li>
+                <li>如未来新增组件，将在应用更新说明中披露。</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
