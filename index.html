@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="OrangeLabs - 专为家庭打造的智能iOS应用">
-    <title>OrangeLabs - 让学习更简单</title>
+    <title>OrangeLabs - 高效工作，快乐生活</title>
     <style>
         * {
             margin: 0;
@@ -384,7 +384,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 180px 10px 120px;
+            padding: 220px 10px 120px;
             border-radius: 24px;
             box-shadow: var(--shadow-lg);
         }
@@ -393,7 +393,7 @@
             .hero {
                 margin: 10px 10px 0 10px;
                 min-height: 600px;
-                padding: 140px 10px 80px;
+                padding: 180px 10px 80px;
             }
         }
 
@@ -574,17 +574,23 @@
 
         /* App Detail Section - Full width white background */
         .app-detail {
-            margin: 24px 10px;
-            padding: 96px 10px 32px 10px;
+            max-width: 1600px;
+            margin: 24px auto;
+            padding: 96px 32px 32px 32px;
             background: var(--white);
             border-radius: 24px;
             box-shadow: var(--shadow-lg);
         }
 
+        @media (max-width: 1640px) {
+            .app-detail {
+                margin: 24px 10px;
+            }
+        }
+
         .detail-container {
-            max-width: 1200px;
+            max-width: 100%;
             margin: 0 auto;
-            padding: 0 40px;
         }
 
         .detail-header {
@@ -708,15 +714,22 @@
 
         /* Highlights Section - Full width gradient background */
         .highlights {
-            margin: 120px 10px 24px 10px;
-            padding: 96px 10px;
+            max-width: 1800px;
+            margin: 120px auto 24px auto;
+            padding: 96px 32px;
             background: linear-gradient(135deg, #ff8c00 0%, #ff6b00 100%);
             border-radius: 24px;
             box-shadow: var(--shadow-lg);
         }
 
+        @media (max-width: 1840px) {
+            .highlights {
+                margin: 120px 10px 24px 10px;
+            }
+        }
+
         .highlights-container {
-            max-width: 1200px;
+            max-width: 100%;
             margin: 0 auto;
         }
 
@@ -825,10 +838,6 @@
                 padding: 64px 24px;
             }
 
-            .detail-container {
-                padding: 0 20px;
-            }
-
             .detail-header {
                 flex-direction: column;
                 text-align: center;
@@ -923,9 +932,7 @@
     <section id="home" class="hero">
         <div class="hero-content fade-in-up">
             <h1>OrangeLabs</h1>
-            <p>专为中国家庭打造的智能iOS应用<br>用AI技术解决家庭教育痛点</p>
-            <a href="#apps" class="btn">探索应用</a>
-            <p class="hero-subtitle">隐私优先 · 完全离线 · 家长放心</p>
+            <p>桔子实验室<br>专注 AI 技术，让工作更高效，让生活更美好</p>
         </div>
     </section>
 
@@ -1167,6 +1174,18 @@
                 menu.classList.add('active');
                 navContainer.classList.add('expanded');
                 currentMenu = menu;
+            });
+        });
+
+        // Close menu when hovering over non-trigger nav links
+        const desktopNavLinks = document.querySelectorAll('.nav-links.desktop > li > a:not(.nav-trigger)');
+        desktopNavLinks.forEach(link => {
+            link.addEventListener('mouseenter', () => {
+                if (currentMenu) {
+                    currentMenu.classList.remove('active');
+                    navContainer.classList.remove('expanded');
+                    currentMenu = null;
+                }
             });
         });
 
