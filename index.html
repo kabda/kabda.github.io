@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>儿童及监护人须知 - 口袋朗读</title>
+    <meta name="description" content="Kabda Apps - 专为家庭打造的智能iOS应用">
+    <title>Kabda Apps - 让学习更简单</title>
     <style>
         * {
             margin: 0;
@@ -11,173 +12,736 @@
             box-sizing: border-box;
         }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-            line-height: 1.8;
-            color: #333;
-            background-color: #f5f5f7;
-            padding: 20px;
+        :root {
+            --primary-color: #6366f1;
+            --secondary-color: #8b5cf6;
+            --accent-color: #ec4899;
+            --text-dark: #1e293b;
+            --text-gray: #64748b;
+            --text-light: #94a3b8;
+            --bg-light: #f8fafc;
+            --bg-white: #ffffff;
+            --border-color: #e2e8f0;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
         }
 
-        .container {
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background: var(--bg-white);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-gray);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
             max-width: 800px;
             margin: 0 auto;
-            background-color: #fff;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 1;
         }
 
-        h1 {
-            font-size: 32px;
-            color: #1d1d1f;
-            margin-bottom: 20px;
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-subtitle {
+            font-size: 1rem;
+            opacity: 0.8;
+            margin-top: 1rem;
+        }
+
+        /* App Grid */
+        .apps-section {
+            padding: 5rem 2rem;
+            background: var(--bg-light);
+        }
+
+        .section-title {
             text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: var(--text-dark);
         }
 
-        h2 {
-            font-size: 24px;
-            color: #1d1d1f;
-            margin-top: 32px;
-            margin-bottom: 16px;
-            padding-bottom: 8px;
-            border-bottom: 2px solid #0071e3;
+        .apps-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
         }
 
-        .meta {
-            text-align: center;
-            color: #666;
-            margin-bottom: 30px;
-            font-size: 14px;
+        .app-card {
+            background: var(--bg-white);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid var(--border-color);
         }
 
-        .intro {
-            margin-bottom: 20px;
+        .app-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
         }
 
-        p {
-            margin-bottom: 16px;
-            text-align: justify;
+        .app-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 1.25rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-md);
         }
 
-        strong {
-            color: #1d1d1f;
+        .app-card h3 {
+            font-size: 1.75rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-dark);
+        }
+
+        .app-card .tagline {
+            color: var(--text-gray);
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .app-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .app-features li {
+            padding: 0.5rem 0;
+            color: var(--text-gray);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .app-features li::before {
+            content: '✓';
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-decoration: none;
+            border-radius: 0.5rem;
             font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
         }
 
-        ul, ol {
-            margin-left: 24px;
-            margin-bottom: 16px;
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
         }
 
-        li {
-            margin-bottom: 8px;
+        .btn-secondary {
+            background: var(--bg-white);
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
         }
 
-        .highlight {
-            background-color: #e8f4fd;
-            padding: 16px;
-            border-left: 4px solid #0071e3;
-            margin-bottom: 20px;
-            border-radius: 4px;
+        /* App Detail Section */
+        .app-detail {
+            padding: 5rem 2rem;
+            background: var(--bg-white);
         }
 
-        .subsection {
-            margin-top: 20px;
+        .detail-container {
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .subsection-title {
-            font-size: 18px;
-            font-weight: 600;
-            color: #1d1d1f;
-            margin-bottom: 12px;
+        .detail-header {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
         }
 
-        .footer {
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid #e0e0e0;
+        .detail-header .app-icon {
+            width: 120px;
+            height: 120px;
+            border-radius: 2rem;
+        }
+
+        .detail-info h2 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .detail-info .tagline {
+            font-size: 1.25rem;
+            color: var(--text-gray);
+            margin-bottom: 1rem;
+        }
+
+        .badges {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            padding: 0.5rem 1rem;
+            background: var(--bg-light);
+            border-radius: 2rem;
+            font-size: 0.875rem;
+            color: var(--text-gray);
+            font-weight: 500;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .feature-card {
+            padding: 2rem;
+            background: var(--bg-light);
+            border-radius: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            background: var(--bg-white);
+            box-shadow: var(--shadow-md);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-dark);
+        }
+
+        .feature-card p {
+            color: var(--text-gray);
+            line-height: 1.6;
+        }
+
+        /* Screenshots */
+        .screenshots {
+            margin: 4rem 0;
+        }
+
+        .screenshots h3 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
             text-align: center;
-            color: #666;
-            font-style: italic;
         }
 
+        .screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .screenshot-item {
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.3s ease;
+        }
+
+        .screenshot-item:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .screenshot-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Highlights Section */
+        .highlights {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .highlights-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .highlights h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .highlight-item {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .highlight-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .highlight-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .highlight-item p {
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 2rem;
+            background: var(--text-dark);
+            color: var(--text-light);
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .copyright {
+            font-size: 0.875rem;
+            opacity: 0.7;
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .container {
-                padding: 20px;
+            .hero h1 {
+                font-size: 2.5rem;
             }
 
-            h1 {
-                font-size: 24px;
+            .hero p {
+                font-size: 1.125rem;
             }
 
-            h2 {
-                font-size: 20px;
+            .nav-links {
+                display: none;
             }
 
-            .subsection-title {
-                font-size: 16px;
+            .section-title {
+                font-size: 2rem;
             }
+
+            .detail-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .detail-info h2 {
+                font-size: 2rem;
+            }
+
+            .screenshots-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 4rem 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .apps-section,
+            .app-detail,
+            .highlights {
+                padding: 3rem 1.5rem;
+            }
+
+            .screenshots-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>儿童及监护人须知</h1>
-        <div class="meta">
-            <p><strong>更新日期</strong>：2025年12月14日</p>
-            <p><strong>生效日期</strong>：2025年12月14日</p>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">Kabda Apps</div>
+            <ul class="nav-links">
+                <li><a href="#home">首页</a></li>
+                <li><a href="#apps">应用</a></li>
+                <li><a href="#pockettutor">PocketTutor</a></li>
+                <li><a href="#contact">联系我们</a></li>
+            </ul>
         </div>
+    </nav>
 
-        <div class="intro">
-            <p>感谢使用「口袋朗读」App！本应用专为儿童学习场景设计，请监护人仔细阅读以下须知。</p>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="fade-in-up">让家庭学习变得更简单</h1>
+            <p class="fade-in-up">专为中国家庭打造的智能iOS应用，用AI技术解决家庭教育痛点</p>
+            <a href="#apps" class="btn">探索应用</a>
+            <p class="hero-subtitle">隐私优先 · 完全离线 · 家长放心</p>
         </div>
+    </section>
 
-        <div class="highlight">
-            <p><strong>根据《儿童个人信息网络保护规定》，儿童使用本应用应当在监护人的指导和监督下进行。</strong></p>
+    <!-- Apps Grid Section -->
+    <section id="apps" class="apps-section">
+        <h2 class="section-title">我们的应用</h2>
+        <div class="apps-grid">
+            <!-- PocketTutor Card -->
+            <div class="app-card" onclick="location.href='#pockettutor'">
+                <img src="docs/PocketTutor/icons/Icon-1024.png" alt="PocketTutor" class="app-icon">
+                <h3>PocketTutor</h3>
+                <p class="tagline">口袋教师 - 智能听写助手</p>
+                <ul class="app-features">
+                    <li>解放家长双手，AI自动听写</li>
+                    <li>拍照批改，5秒出结果</li>
+                    <li>完全离线，隐私安全</li>
+                    <li>支持多孩子管理</li>
+                </ul>
+                <a href="#pockettutor" class="btn">了解更多</a>
+            </div>
+
+            <!-- Placeholder for future apps -->
+            <div class="app-card" style="opacity: 0.6; cursor: default;" onclick="event.stopPropagation()">
+                <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 1.25rem; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; font-size: 2rem;">🚀</div>
+                <h3>即将推出</h3>
+                <p class="tagline">更多应用正在开发中...</p>
+                <ul class="app-features">
+                    <li>持续为家庭打造实用工具</li>
+                    <li>敬请期待</li>
+                </ul>
+                <button class="btn btn-secondary" disabled style="opacity: 0.5;">敬请期待</button>
+            </div>
         </div>
+    </section>
 
-        <h2>一、适用对象</h2>
-        <p>本应用面向儿童用户（不满十四周岁的未成年人），主要帮助其完成听写作业。建议儿童在家长或监护人指导下使用。</p>
+    <!-- PocketTutor Detail Section -->
+    <section id="pockettutor" class="app-detail">
+        <div class="detail-container">
+            <div class="detail-header">
+                <img src="docs/PocketTutor/icons/Icon-1024.png" alt="PocketTutor" class="app-icon">
+                <div class="detail-info">
+                    <h2>PocketTutor - 口袋教师</h2>
+                    <p class="tagline">专为双职工家庭设计的智能听写辅导应用</p>
+                    <div class="badges">
+                        <span class="badge">📱 iOS 17.0+</span>
+                        <span class="badge">🔒 完全离线</span>
+                        <span class="badge">🤖 AI智能批改</span>
+                        <span class="badge">👨‍👩‍👧‍👦 多孩子支持</span>
+                    </div>
+                </div>
+            </div>
 
-        <h2>二、功能说明</h2>
-        <p>本应用提供词语自动播报与拍照检查功能，旨在提升孩子的自主学习能力。应用不联网，不进行任何数据传输。</p>
+            <!-- Core Features -->
+            <h3 style="font-size: 2rem; margin-bottom: 2rem; text-align: center;">核心功能</h3>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>智能听写助手</h3>
+                    <p>支持6种主流教材版本，灵活管理语文和英语词表。自动朗读词语，可设置3/5/10秒间隔，让孩子独立完成听写。</p>
+                </div>
 
-        <h2>三、信息安全</h2>
-        <ol>
-            <li>本应用不收集、不上传、不共享任何个人信息。</li>
-            <li>所有听写记录与照片仅存储在本地，卸载应用即自动删除。</li>
-            <li>请家长妥善保管设备，防止照片或记录外泄。</li>
-        </ol>
+                <div class="feature-card">
+                    <div class="feature-icon">📸</div>
+                    <h3>AI拍照批改</h3>
+                    <p>采用PaddleOCR技术，5秒完成批改，准确率高达90%以上。自动检测照片质量，五星评价体系，逐个标注对错。</p>
+                </div>
 
-        <h2>四、监护人责任与权利</h2>
+                <div class="feature-card">
+                    <div class="feature-icon">👶</div>
+                    <h3>孩子档案管理</h3>
+                    <p>支持多个孩子档案，每个孩子拥有独立的词表、学习历史和统计数据。首页卡片设计，快速切换。</p>
+                </div>
 
-        <div class="subsection">
-            <div class="subsection-title">监护人责任：</div>
-            <ol>
-                <li>监护人应合理安排孩子使用电子产品时间，避免过度使用影响视力和身心健康。</li>
-                <li>监护人应指导儿童正确使用本应用，确保儿童理解应用功能和使用方法。</li>
-                <li>请勿让儿童修改或删除系统权限配置，以免影响应用正常使用。</li>
-                <li>监护人应妥善保管设备，设置设备密码，防止儿童学习记录或照片被他人访问。</li>
-            </ol>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>学习历史追踪</h3>
+                    <p>记录每一次听写会话，按科目和年级筛选。显示连续打卡天数、总完成次数，见证孩子每一次进步。</p>
+                </div>
+            </div>
+
+            <!-- Screenshots -->
+            <div class="screenshots">
+                <h3>应用截图</h3>
+                <div class="screenshots-grid">
+                    <div class="screenshot-item">
+                        <img src="docs/PocketTutor/screenshots/1.jpg" alt="PocketTutor Screenshot 1">
+                    </div>
+                    <div class="screenshot-item">
+                        <img src="docs/PocketTutor/screenshots/2.jpg" alt="PocketTutor Screenshot 2">
+                    </div>
+                    <div class="screenshot-item">
+                        <img src="docs/PocketTutor/screenshots/3.jpg" alt="PocketTutor Screenshot 3">
+                    </div>
+                    <div class="screenshot-item">
+                        <img src="docs/PocketTutor/screenshots/4.jpg" alt="PocketTutor Screenshot 4">
+                    </div>
+                    <div class="screenshot-item">
+                        <img src="docs/PocketTutor/screenshots/5.jpg" alt="PocketTutor Screenshot 5">
+                    </div>
+                    <div class="screenshot-item">
+                        <img src="docs/PocketTutor/screenshots/6.jpg" alt="PocketTutor Screenshot 6">
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div class="subsection">
-            <div class="subsection-title">监护人权利：</div>
-            <ol>
-                <li>监护人有权随时了解本应用的功能和隐私保护措施。</li>
-                <li>监护人有权要求开发者说明应用对儿童个人信息的处理情况（本应用不收集儿童个人信息）。</li>
-                <li>监护人有权随时停止儿童使用本应用。</li>
-                <li>若孩子反馈问题或监护人有任何疑问，可联系开发者咨询。</li>
-            </ol>
+    <!-- Highlights Section -->
+    <section class="highlights">
+        <div class="highlights-container">
+            <h2>为什么选择我们的应用</h2>
+            <div class="highlights-grid">
+                <div class="highlight-item">
+                    <div class="highlight-icon">🔒</div>
+                    <h3>隐私保护第一</h3>
+                    <p>所有数据本地存储，不上传云端。完全离线工作，家长完全放心。</p>
+                </div>
+
+                <div class="highlight-item">
+                    <div class="highlight-icon">🤖</div>
+                    <h3>AI智能技术</h3>
+                    <p>采用先进的PaddleOCR技术，识别准确率达90%以上，针对儿童手写优化。</p>
+                </div>
+
+                <div class="highlight-item">
+                    <div class="highlight-icon">📚</div>
+                    <h3>适配多种教材</h3>
+                    <p>支持人教版、苏教版、北师大版、浙教版、统编版等主流教材。</p>
+                </div>
+
+                <div class="highlight-item">
+                    <div class="highlight-icon">👨‍👩‍👧‍👦</div>
+                    <h3>多孩子友好</h3>
+                    <p>一个应用管理多个孩子，每个孩子独立管理词表和学习记录。</p>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <h2>五、联系方式</h2>
-        <p>如有任何疑问，可通过 App Store 开发者页面获取联系邮箱。</p>
-
-        <div class="footer">
-            <p>此须知旨在共同保护儿童的隐私与学习安全。</p>
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="mailto:report@kabda.cn">问题反馈</a>
+                <a href="mailto:report@kabda.cn">合作咨询</a>
+                <a href="pockettutor-privacy-policy.html" target="_blank">隐私政策</a>
+            </div>
+            <p class="copyright">&copy; 2024 Kabda Apps. 用心打造家庭教育应用.</p>
+            <p style="margin-top: 1rem; font-size: 0.875rem;">联系邮箱: report@kabda.cn</p>
         </div>
-    </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 80;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe feature cards
+        document.querySelectorAll('.feature-card, .app-card, .highlight-item').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
 </body>
 </html>
