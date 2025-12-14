@@ -81,6 +81,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: nowrap;
         }
 
         header.scrolled .nav-container {
@@ -96,6 +97,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            flex-shrink: 0;
         }
 
         .logo-image {
@@ -279,45 +281,43 @@
             padding: 8px;
             cursor: pointer;
             color: var(--text-dark);
+            flex-shrink: 0;
+            margin-left: auto;
         }
 
         /* Mobile menu */
         .nav-links.mobile {
             display: none;
-            position: fixed;
-            top: 136px;
-            left: 20px;
-            right: 20px;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-radius: 20px;
-            border: 1px solid rgba(0, 0, 0, 0.06);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-            padding: 16px;
             flex-direction: column;
             gap: 4px;
-            z-index: 999;
+            width: 100%;
+            max-height: 0;
+            overflow: hidden;
             opacity: 0;
-            transform: translateY(-10px);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .nav-links.mobile.active {
             display: flex;
+            max-height: 500px;
             opacity: 1;
-            transform: translateY(0);
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(0, 0, 0, 0.06);
         }
 
         .nav-links.mobile a,
         .nav-links.mobile button {
             width: 100%;
-            text-align: left;
+            text-align: center;
             padding: 12px 16px;
         }
 
         .nav-links.mobile .nav-item {
             width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .nav-links.mobile .dropdown-menu {
@@ -329,6 +329,28 @@
             box-shadow: none;
             border: none;
             background: rgba(0, 0, 0, 0.02);
+            padding: 8px;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .nav-links.mobile .dropdown-item {
+            justify-content: center;
+            max-width: fit-content;
+            margin: 0 auto;
+        }
+
+        /* 在桌面视图下强制隐藏移动菜单 */
+        @media (min-width: 769px) {
+            .nav-links.mobile {
+                display: none !important;
+            }
+            
+            .nav-container.expanded {
+                padding-bottom: 4px !important;
+            }
         }
 
         @media (max-width: 768px) {
@@ -342,10 +364,6 @@
 
             header {
                 top: 20px;
-            }
-
-            .nav-links.mobile {
-                top: 92px;
             }
         }
 
@@ -848,8 +866,14 @@
                         <a href="#apps" class="nav-trigger" data-menu="apps">应用</a>
                     </li>
                     <li><a href="#contact">联系</a></li>
-                    <li><a href="#pockettutor" class="nav-cta">免费试用</a></li>
                 </ul>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M4 7L20 7V5L4 5V7Z"/>
+                        <path d="M4 19H20V17H4V19Z"/>
+                        <path d="M4.00049 13.0005H20.0005V11.0005H4.00049V13.0005Z"/>
+                    </svg>
+                </button>
             </div>
             <div class="mega-menu-container" id="megaMenuApps">
                 <div class="dropdown-menu">
@@ -869,13 +893,6 @@
                     </a>
                 </div>
             </div>
-            <button class="mobile-menu-toggle" id="mobileMenuToggle">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M4 7L20 7V5L4 5V7Z"/>
-                    <path d="M4 19H20V17H4V19Z"/>
-                    <path d="M4.00049 13.0005H20.0005V11.0005H4.00049V13.0005Z"/>
-                </svg>
-            </button>
             <ul class="nav-links mobile" id="mobileMenu">
                 <li><a href="#home">首页</a></li>
                 <li class="nav-item">
@@ -891,7 +908,6 @@
                     </div>
                 </li>
                 <li><a href="#contact">联系</a></li>
-                <li><a href="#pockettutor" class="nav-cta">免费试用</a></li>
             </ul>
         </nav>
     </header>
@@ -1120,6 +1136,7 @@
         mobileMenuToggle.addEventListener('click', function(e) {
             e.stopPropagation();
             mobileMenu.classList.toggle('active');
+            navContainer.classList.toggle('expanded');
         });
 
         // Mega Menu control
@@ -1165,10 +1182,23 @@
             clearTimeout(hideTimeout);
         });
 
+        // Handle window resize - close mobile menu when switching to desktop view
+        let resizeTimeout;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+                if (window.innerWidth > 768) {
+                    mobileMenu.classList.remove('active');
+                    navContainer.classList.remove('expanded');
+                }
+            }, 150);
+        });
+
         // Close mobile menu when clicking on a link
         mobileMenu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', function() {
                 mobileMenu.classList.remove('active');
+                navContainer.classList.remove('expanded');
             });
         });
 
@@ -1176,6 +1206,7 @@
         document.addEventListener('click', function(e) {
             if (!mobileMenu.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
                 mobileMenu.classList.remove('active');
+                navContainer.classList.remove('expanded');
             }
         });
 
