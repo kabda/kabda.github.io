@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>儿童及监护人须知 - 口袋朗读</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background-color: #f5f5f7;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 32px;
+            color: #1d1d1f;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 24px;
+            color: #1d1d1f;
+            margin-top: 32px;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #0071e3;
+        }
+
+        .meta {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .intro {
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin-bottom: 16px;
+            text-align: justify;
+        }
+
+        strong {
+            color: #1d1d1f;
+            font-weight: 600;
+        }
+
+        ul, ol {
+            margin-left: 24px;
+            margin-bottom: 16px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .highlight {
+            background-color: #e8f4fd;
+            padding: 16px;
+            border-left: 4px solid #0071e3;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+
+        .subsection {
+            margin-top: 20px;
+        }
+
+        .subsection-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 12px;
+        }
+
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+            text-align: center;
+            color: #666;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+
+            .subsection-title {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>儿童及监护人须知</h1>
+        <div class="meta">
+            <p><strong>更新日期</strong>：2025年12月14日</p>
+            <p><strong>生效日期</strong>：2025年12月14日</p>
+        </div>
+
+        <div class="intro">
+            <p>感谢使用「口袋朗读」App！本应用专为儿童学习场景设计，请监护人仔细阅读以下须知。</p>
+        </div>
+
+        <div class="highlight">
+            <p><strong>根据《儿童个人信息网络保护规定》，儿童使用本应用应当在监护人的指导和监督下进行。</strong></p>
+        </div>
+
+        <h2>一、适用对象</h2>
+        <p>本应用面向儿童用户（不满十四周岁的未成年人），主要帮助其完成听写作业。建议儿童在家长或监护人指导下使用。</p>
+
+        <h2>二、功能说明</h2>
+        <p>本应用提供词语自动播报与拍照检查功能，旨在提升孩子的自主学习能力。应用不联网，不进行任何数据传输。</p>
+
+        <h2>三、信息安全</h2>
+        <ol>
+            <li>本应用不收集、不上传、不共享任何个人信息。</li>
+            <li>所有听写记录与照片仅存储在本地，卸载应用即自动删除。</li>
+            <li>请家长妥善保管设备，防止照片或记录外泄。</li>
+        </ol>
+
+        <h2>四、监护人责任与权利</h2>
+
+        <div class="subsection">
+            <div class="subsection-title">监护人责任：</div>
+            <ol>
+                <li>监护人应合理安排孩子使用电子产品时间，避免过度使用影响视力和身心健康。</li>
+                <li>监护人应指导儿童正确使用本应用，确保儿童理解应用功能和使用方法。</li>
+                <li>请勿让儿童修改或删除系统权限配置，以免影响应用正常使用。</li>
+                <li>监护人应妥善保管设备，设置设备密码，防止儿童学习记录或照片被他人访问。</li>
+            </ol>
+        </div>
+
+        <div class="subsection">
+            <div class="subsection-title">监护人权利：</div>
+            <ol>
+                <li>监护人有权随时了解本应用的功能和隐私保护措施。</li>
+                <li>监护人有权要求开发者说明应用对儿童个人信息的处理情况（本应用不收集儿童个人信息）。</li>
+                <li>监护人有权随时停止儿童使用本应用。</li>
+                <li>若孩子反馈问题或监护人有任何疑问，可联系开发者咨询。</li>
+            </ol>
+        </div>
+
+        <h2>五、联系方式</h2>
+        <p>如有任何疑问，可通过 App Store 开发者页面获取联系邮箱。</p>
+
+        <div class="footer">
+            <p>此须知旨在共同保护儿童的隐私与学习安全。</p>
+        </div>
+    </div>
+</body>
+</html>
