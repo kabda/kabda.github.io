@@ -496,72 +496,42 @@
 
         /* Apps Section - Full width beige background */
         .apps-section {
-            padding: 96px 0;
+            padding: 96px 0 60px;
+            position: relative;
+            z-index: 1;
         }
 
         .section-title {
             text-align: center;
             font-size: 48px;
             font-weight: 700;
-            margin-bottom: 64px;
+            margin-bottom: 40px;
             color: var(--text-dark);
         }
 
         @media (max-width: 768px) {
             .section-title {
                 font-size: 36px;
-                margin-bottom: 48px;
+                margin-bottom: 32px;
             }
         }
 
         /* Apps Carousel Container */
-        .apps-section {
-            position: relative;
-            overflow: visible;
-        }
-
         .apps-carousel-wrapper {
             position: relative;
-            overflow: hidden;
         }
 
-        /* 左右渐变遮罩 */
-        .apps-carousel-wrapper::before,
-        .apps-carousel-wrapper::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            width: 60px;
-            z-index: 10;
-            pointer-events: none;
-        }
-
-        .apps-carousel-wrapper::before {
-            left: 0;
-            background: linear-gradient(to right, var(--beige) 0%, transparent 100%);
-        }
-
-        .apps-carousel-wrapper::after {
-            right: 0;
-            background: linear-gradient(to left, var(--beige) 0%, transparent 100%);
-        }
-
-        @media (max-width: 768px) {
-            .apps-carousel-wrapper::before,
-            .apps-carousel-wrapper::after {
-                width: 40px;
-            }
+        .apps-grid-outer {
         }
 
         .apps-grid {
             display: flex;
-            gap: 24px;
+            gap: 48px;
             overflow-x: auto;
             scroll-snap-type: x mandatory;
             scroll-behavior: smooth;
             -webkit-overflow-scrolling: touch;
-            padding: 30px 0 40px;
+            padding: 40px calc(50% - 190px);
             scrollbar-width: none;
             -ms-overflow-style: none;
         }
@@ -606,9 +576,9 @@
 
         @media (max-width: 768px) {
             .app-card {
-                flex: 0 0 300px;
-                min-width: 280px;
-                max-width: 320px;
+                flex: 0 0 85vw;
+                min-width: 300px;
+                max-width: 380px;
                 padding: 32px;
             }
         }
@@ -1028,7 +998,11 @@
 
         /* Responsive */
         @media (max-width: 768px) {
-            .apps-section,
+            .apps-section {
+                margin: 16px 0;
+                padding: 64px 0;
+            }
+
             .app-detail,
             .highlights {
                 margin: 16px 20px;
@@ -1058,19 +1032,14 @@
                 grid-template-columns: 1fr;
             }
 
-            .apps-carousel-wrapper::before,
-            .apps-carousel-wrapper::after {
-                width: 30px;
-            }
-
             .apps-grid {
-                padding: 30px calc(50% - 150px) 40px;
+                padding: 30px calc(50% - 140px) 40px;
             }
 
             .app-card {
-                flex: 0 0 280px;
-                min-width: 260px;
-                max-width: 300px;
+                flex: 0 0 85vw;
+                min-width: 280px;
+                max-width: 340px;
                 padding: 28px;
             }
         }
@@ -1153,6 +1122,7 @@
     <section id="apps" class="apps-section">
         <h2 class="section-title">我们的应用</h2>
         <div class="apps-carousel-wrapper">
+            <div class="apps-grid-outer">
             <!-- Navigation Arrows -->
             <button class="apps-nav-arrow prev" id="appsPrevBtn" aria-label="上一个应用">
                 <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -1194,6 +1164,7 @@
                     </ul>
                     <button class="btn btn-secondary" disabled style="opacity: 0.5; cursor: not-allowed;">敬请期待</button>
                 </div>
+            </div>
             </div>
         </div>
         <!-- Carousel Indicators -->
