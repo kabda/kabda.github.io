@@ -496,7 +496,7 @@
 
         /* Apps Section - Full width beige background */
         .apps-section {
-            padding: 96px 10px;
+            padding: 96px 0;
         }
 
         .section-title {
@@ -514,13 +514,62 @@
             }
         }
 
-        .apps-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 24px;
-            max-width: 1200px;
-            margin: 0 auto;
+        /* Apps Carousel Container */
+        .apps-section {
+            position: relative;
+            overflow: visible;
         }
+
+        .apps-carousel-wrapper {
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 左右渐变遮罩 */
+        .apps-carousel-wrapper::before,
+        .apps-carousel-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 60px;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        .apps-carousel-wrapper::before {
+            left: 0;
+            background: linear-gradient(to right, var(--beige) 0%, transparent 100%);
+        }
+
+        .apps-carousel-wrapper::after {
+            right: 0;
+            background: linear-gradient(to left, var(--beige) 0%, transparent 100%);
+        }
+
+        @media (max-width: 768px) {
+            .apps-carousel-wrapper::before,
+            .apps-carousel-wrapper::after {
+                width: 40px;
+            }
+        }
+
+        .apps-grid {
+            display: flex;
+            gap: 24px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            padding: 30px 0 40px;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .apps-grid::-webkit-scrollbar {
+            display: none;
+        }
+
 
         .app-card {
             background: var(--white);
@@ -530,6 +579,130 @@
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
             border: 1px solid rgba(0, 0, 0, 0.06);
+            flex: 0 0 360px;
+            min-width: 320px;
+            max-width: 440px;
+            scroll-snap-align: center;
+            scroll-snap-stop: always;
+        }
+
+        @media (min-width: 769px) {
+            .app-card {
+                flex: 0 0 400px;
+                min-width: 360px;
+                max-width: 480px;
+                padding: 48px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .app-card {
+                flex: 0 0 480px;
+                min-width: 420px;
+                max-width: 520px;
+                padding: 52px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .app-card {
+                flex: 0 0 300px;
+                min-width: 280px;
+                max-width: 320px;
+                padding: 32px;
+            }
+        }
+
+        /* Carousel Indicators */
+        .apps-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 32px;
+            padding-bottom: 20px;
+        }
+
+        .apps-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 0;
+        }
+
+        .apps-indicator:hover {
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .apps-indicator.active {
+            background: var(--orange-main);
+            transform: scale(1.2);
+        }
+
+        /* Carousel Navigation Arrows - Desktop Only */
+        .apps-nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(4px) saturate(180%);
+            -webkit-backdrop-filter: blur(4px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 20;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .apps-nav-arrow:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: translateY(-50%) scale(1.08);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
+        }
+
+        .apps-nav-arrow:active {
+            transform: translateY(-50%) scale(0.95);
+        }
+
+        .apps-nav-arrow svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--text-dark);
+        }
+
+        .apps-nav-arrow.prev {
+            left: 24px;
+        }
+
+        .apps-nav-arrow.next {
+            right: 24px;
+        }
+
+        .apps-nav-arrow.disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .apps-nav-arrow.disabled:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-50%);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+        }
+
+        /* Hide arrows on mobile */
+        @media (max-width: 768px) {
+            .apps-nav-arrow {
+                display: none;
+            }
         }
 
         .app-card:hover {
@@ -885,8 +1058,20 @@
                 grid-template-columns: 1fr;
             }
 
+            .apps-carousel-wrapper::before,
+            .apps-carousel-wrapper::after {
+                width: 30px;
+            }
+
             .apps-grid {
-                grid-template-columns: 1fr;
+                padding: 30px calc(50% - 150px) 40px;
+            }
+
+            .app-card {
+                flex: 0 0 280px;
+                min-width: 260px;
+                max-width: 300px;
+                padding: 28px;
             }
         }
     </style>
@@ -920,8 +1105,8 @@
                     <a href="#pockettutor" class="dropdown-item">
                         <img src="docs/PocketTutor/icons/Icon-80x80.png" alt="PocketTutor" class="dropdown-icon">
                         <div class="dropdown-text">
-                            <div class="app-name">PocketTutor</div>
-                            <div class="app-desc">智能听写助手</div>
+                            <div class="app-name">口袋听写</div>
+                            <div class="app-desc">AI 听写助手</div>
                         </div>
                     </a>
                     <a href="#" class="dropdown-item">
@@ -967,36 +1152,54 @@
     <!-- Apps Section -->
     <section id="apps" class="apps-section">
         <h2 class="section-title">我们的应用</h2>
-        <div class="apps-grid">
-            <!-- PocketTutor Card -->
-            <div class="app-card" onclick="location.href='#pockettutor'">
-                <img src="docs/PocketTutor/icons/Icon-192x192.png" alt="PocketTutor" class="app-icon">
-                <h3>口袋听写</h3>
-                <p class="tagline">AI 听写助手</p>
-                <ul class="app-features">
-                    <li>解放家长双手，AI自动听写</li>
-                    <li>拍照批改，5秒出结果</li>
-                    <li>完全离线，隐私安全</li>
-                    <li>支持多孩子管理</li>
-                </ul>
-                <a href="#pockettutor" class="btn">了解更多</a>
-            </div>
-
-            <!-- Placeholder for future apps -->
-            <div class="app-card" style="opacity: 0.6; cursor: default;" onclick="event.stopPropagation()">
-                <div style="width: 96px; height: 96px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 22px; margin-bottom: 24px; display: flex; align-items: center; justify-content: center; font-size: 48px; box-shadow: var(--shadow-md);">
-                    <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="width: 56px; height: 56px;">
-                        <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.58 20 4 16.42 4 12C4 7.58 7.58 4 12 4C16.42 4 20 7.58 20 12C20 16.42 16.42 20 12 20ZM12 7C11.45 7 11 7.45 11 8V13C11 13.55 11.45 14 12 14C12.55 14 13 13.55 13 13V8C13 7.45 12.55 7 12 7ZM12 15C11.45 15 11 15.45 11 16C11 16.55 11.45 17 12 17C12.55 17 13 16.55 13 16C13 15.45 12.55 15 12 15Z"/>
-                    </svg>
+        <div class="apps-carousel-wrapper">
+            <!-- Navigation Arrows -->
+            <button class="apps-nav-arrow prev" id="appsPrevBtn" aria-label="上一个应用">
+                <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15.41 7.41L14 6L8 12L14 18L15.41 16.59L10.83 12L15.41 7.41Z"/>
+                </svg>
+            </button>
+            <button class="apps-nav-arrow next" id="appsNextBtn" aria-label="下一个应用">
+                <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8.59 16.59L10 18L16 12L10 6L8.59 7.41L13.17 12L8.59 16.59Z"/>
+                </svg>
+            </button>
+            <div class="apps-grid">
+                <!-- PocketTutor Card -->
+                <div class="app-card" onclick="location.href='#pockettutor'">
+                    <img src="docs/PocketTutor/icons/Icon-192x192.png" alt="PocketTutor" class="app-icon">
+                    <h3>口袋听写</h3>
+                    <p class="tagline">AI 听写助手</p>
+                    <ul class="app-features">
+                        <li>解放家长双手，AI自动听写</li>
+                        <li>拍照批改，5秒出结果</li>
+                        <li>完全离线，隐私安全</li>
+                        <li>支持多孩子管理</li>
+                    </ul>
+                    <a href="#pockettutor" class="btn">了解更多</a>
                 </div>
-                <h3>即将推出</h3>
-                <p class="tagline">更多应用正在开发中...</p>
-                <ul class="app-features">
-                    <li>持续为家庭打造实用工具</li>
-                    <li>敬请期待</li>
-                </ul>
-                <button class="btn btn-secondary" disabled style="opacity: 0.5; cursor: not-allowed;">敬请期待</button>
+
+                <!-- Placeholder for future apps -->
+                <div class="app-card" style="opacity: 0.6; cursor: default;" onclick="event.stopPropagation()">
+                    <div style="width: 96px; height: 96px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 22px; margin-bottom: 24px; display: flex; align-items: center; justify-content: center; font-size: 48px; box-shadow: var(--shadow-md);">
+                        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="width: 56px; height: 56px;">
+                            <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.58 20 4 16.42 4 12C4 7.58 7.58 4 12 4C16.42 4 20 7.58 20 12C20 16.42 16.42 20 12 20ZM12 7C11.45 7 11 7.45 11 8V13C11 13.55 11.45 14 12 14C12.55 14 13 13.55 13 13V8C13 7.45 12.55 7 12 7ZM12 15C11.45 15 11 15.45 11 16C11 16.55 11.45 17 12 17C12.55 17 13 16.55 13 16C13 15.45 12.55 15 12 15Z"/>
+                        </svg>
+                    </div>
+                    <h3>即将推出</h3>
+                    <p class="tagline">更多应用正在开发中...</p>
+                    <ul class="app-features">
+                        <li>持续为家庭打造实用工具</li>
+                        <li>敬请期待</li>
+                    </ul>
+                    <button class="btn btn-secondary" disabled style="opacity: 0.5; cursor: not-allowed;">敬请期待</button>
+                </div>
             </div>
+        </div>
+        <!-- Carousel Indicators -->
+        <div class="apps-indicators">
+            <button class="apps-indicator active" data-index="0" aria-label="查看第1个应用"></button>
+            <button class="apps-indicator" data-index="1" aria-label="查看第2个应用"></button>
         </div>
     </section>
 
@@ -1315,6 +1518,86 @@
             el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
             observer.observe(el);
         });
+
+        // Apps Carousel Indicators and Navigation
+        const appsGrid = document.querySelector('.apps-grid');
+        const appCards = document.querySelectorAll('.apps-grid .app-card');
+        const indicators = document.querySelectorAll('.apps-indicator');
+        const prevBtn = document.getElementById('appsPrevBtn');
+        const nextBtn = document.getElementById('appsNextBtn');
+
+        if (appsGrid && appCards.length > 0 && indicators.length > 0) {
+            // Function to update arrow button states
+            function updateArrowStates() {
+                const scrollLeft = appsGrid.scrollLeft;
+                const cardWidth = appCards[0].offsetWidth + 24;
+                const currentIndex = Math.round(scrollLeft / cardWidth);
+                const maxIndex = appCards.length - 1;
+
+                if (prevBtn) {
+                    prevBtn.classList.toggle('disabled', currentIndex === 0);
+                }
+                if (nextBtn) {
+                    nextBtn.classList.toggle('disabled', currentIndex >= maxIndex);
+                }
+            }
+
+            // Update indicators and arrows on scroll
+            appsGrid.addEventListener('scroll', function() {
+                const scrollLeft = appsGrid.scrollLeft;
+                const cardWidth = appCards[0].offsetWidth + 24; // card width + gap
+                const currentIndex = Math.round(scrollLeft / cardWidth);
+                
+                indicators.forEach((indicator, index) => {
+                    indicator.classList.toggle('active', index === currentIndex);
+                });
+
+                updateArrowStates();
+            });
+
+            // Click on indicator to scroll to card
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', function() {
+                    const cardWidth = appCards[0].offsetWidth + 24;
+                    appsGrid.scrollTo({
+                        left: cardWidth * index,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Arrow button click handlers
+            if (prevBtn) {
+                prevBtn.addEventListener('click', function() {
+                    const scrollLeft = appsGrid.scrollLeft;
+                    const cardWidth = appCards[0].offsetWidth + 24;
+                    const currentIndex = Math.round(scrollLeft / cardWidth);
+                    if (currentIndex > 0) {
+                        appsGrid.scrollTo({
+                            left: cardWidth * (currentIndex - 1),
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            }
+
+            if (nextBtn) {
+                nextBtn.addEventListener('click', function() {
+                    const scrollLeft = appsGrid.scrollLeft;
+                    const cardWidth = appCards[0].offsetWidth + 24;
+                    const currentIndex = Math.round(scrollLeft / cardWidth);
+                    if (currentIndex < appCards.length - 1) {
+                        appsGrid.scrollTo({
+                            left: cardWidth * (currentIndex + 1),
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            }
+
+            // Initial arrow state update
+            updateArrowStates();
+        }
     </script>
 </body>
 </html>
