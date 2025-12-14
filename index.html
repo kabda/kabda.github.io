@@ -386,6 +386,7 @@
             justify-content: center;
             padding: 180px 10px 120px;
             border-radius: 24px;
+            box-shadow: var(--shadow-lg);
         }
 
         @media (max-width: 768px) {
@@ -486,10 +487,7 @@
 
         /* Apps Section - Full width beige background */
         .apps-section {
-            margin: 24px 10px;
             padding: 96px 10px;
-            background: var(--beige);
-            border-radius: 24px;
         }
 
         .section-title {
@@ -577,14 +575,16 @@
         /* App Detail Section - Full width white background */
         .app-detail {
             margin: 24px 10px;
-            padding: 96px 10px;
+            padding: 96px 10px 32px 10px;
             background: var(--white);
             border-radius: 24px;
+            box-shadow: var(--shadow-lg);
         }
 
         .detail-container {
             max-width: 1200px;
             margin: 0 auto;
+            padding: 0 40px;
         }
 
         .detail-header {
@@ -691,6 +691,8 @@
             overflow: hidden;
             box-shadow: var(--shadow-lg);
             transition: all 0.3s ease;
+            background: #f5f5f5;
+            border: 1px solid rgba(0, 0, 0, 0.08);
         }
 
         .screenshot-item:hover {
@@ -706,10 +708,11 @@
 
         /* Highlights Section - Full width gradient background */
         .highlights {
-            margin: 24px 10px;
+            margin: 120px 10px 24px 10px;
             padding: 96px 10px;
             background: linear-gradient(135deg, #ff8c00 0%, #ff6b00 100%);
             border-radius: 24px;
+            box-shadow: var(--shadow-lg);
         }
 
         .highlights-container {
@@ -822,6 +825,10 @@
                 padding: 64px 24px;
             }
 
+            .detail-container {
+                padding: 0 20px;
+            }
+
             .detail-header {
                 flex-direction: column;
                 text-align: center;
@@ -878,7 +885,7 @@
             <div class="mega-menu-container" id="megaMenuApps">
                 <div class="dropdown-menu">
                     <a href="#pockettutor" class="dropdown-item">
-                        <img src="docs/PocketTutor/icons/Icon-1024.png" alt="PocketTutor" class="dropdown-icon">
+                        <img src="docs/PocketTutor/icons/Icon-80x80.png" alt="PocketTutor" class="dropdown-icon">
                         <div class="dropdown-text">
                             <div class="app-name">PocketTutor</div>
                             <div class="app-desc">智能听写助手</div>
@@ -899,7 +906,7 @@
                     <a href="#apps">应用</a>
                     <div class="dropdown-menu">
                         <a href="#pockettutor" class="dropdown-item">
-                            <img src="docs/PocketTutor/icons/Icon-1024.png" alt="PocketTutor" class="dropdown-icon">
+                            <img src="docs/PocketTutor/icons/Icon-80x80.png" alt="PocketTutor" class="dropdown-icon">
                             <div class="dropdown-text">
                                 <div class="app-name">PocketTutor</div>
                                 <div class="app-desc">智能听写助手</div>
@@ -928,7 +935,7 @@
         <div class="apps-grid">
             <!-- PocketTutor Card -->
             <div class="app-card" onclick="location.href='#pockettutor'">
-                <img src="docs/PocketTutor/icons/Icon-1024.png" alt="PocketTutor" class="app-icon">
+                <img src="docs/PocketTutor/icons/Icon-192x192.png" alt="PocketTutor" class="app-icon">
                 <h3>PocketTutor</h3>
                 <p class="tagline">口袋听写 - 智能听写助手</p>
                 <ul class="app-features">
@@ -958,7 +965,7 @@
     <section id="pockettutor" class="app-detail">
         <div class="detail-container">
             <div class="detail-header">
-                <img src="docs/PocketTutor/icons/Icon-1024.png" alt="PocketTutor" class="app-icon">
+                <img src="docs/PocketTutor/icons/Icon-280x280.png" alt="PocketTutor" class="app-icon">
                 <div class="detail-info">
                     <h2>PocketTutor</h2>
                     <p class="tagline">专为双职工家庭设计的智能听写辅导应用</p>
@@ -1004,22 +1011,19 @@
                 <h3>应用截图</h3>
                 <div class="screenshots-grid">
                     <div class="screenshot-item">
-                        <img src="docs/PocketTutor/screenshots/1.jpg" alt="PocketTutor Screenshot 1">
+                        <img src="docs/PocketTutor/screenshots/launch-380×826.png" alt="PocketTutor 启动页">
                     </div>
                     <div class="screenshot-item">
-                        <img src="docs/PocketTutor/screenshots/2.jpg" alt="PocketTutor Screenshot 2">
+                        <img src="docs/PocketTutor/screenshots/home-380×826.png" alt="PocketTutor 首页">
                     </div>
                     <div class="screenshot-item">
-                        <img src="docs/PocketTutor/screenshots/3.jpg" alt="PocketTutor Screenshot 3">
+                        <img src="docs/PocketTutor/screenshots/dictation-380×826.png" alt="PocketTutor 听写">
                     </div>
                     <div class="screenshot-item">
-                        <img src="docs/PocketTutor/screenshots/4.jpg" alt="PocketTutor Screenshot 4">
+                        <img src="docs/PocketTutor/screenshots/countdown-380×826.png" alt="PocketTutor 倒计时">
                     </div>
                     <div class="screenshot-item">
-                        <img src="docs/PocketTutor/screenshots/5.jpg" alt="PocketTutor Screenshot 5">
-                    </div>
-                    <div class="screenshot-item">
-                        <img src="docs/PocketTutor/screenshots/6.jpg" alt="PocketTutor Screenshot 6">
+                        <img src="docs/PocketTutor/screenshots/result-380×826.png" alt="PocketTutor 结果">
                     </div>
                 </div>
             </div>
