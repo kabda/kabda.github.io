@@ -48,7 +48,7 @@
             transform: translateX(-50%);
             z-index: 1000;
             width: calc(100% - 40px);
-            max-width: 1200px;
+            max-width: 800px;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
@@ -60,20 +60,31 @@
         }
 
         .nav-container {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-radius: 50px;
-            border: 1px solid rgba(0, 0, 0, 0.06);
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(4px) saturate(180%);
+            -webkit-backdrop-filter: blur(4px) saturate(180%);
+            border-radius: 28px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
             padding: 4px 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-container.expanded {
+            padding-bottom: 24px;
+        }
+
+        .nav-top {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         header.scrolled .nav-container {
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, 0.35);
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
         }
 
@@ -133,50 +144,49 @@
             box-shadow: var(--shadow-sm);
         }
 
-        /* Dropdown menu */
+        /* Mega Menu - Craft.do style */
         .nav-item {
             position: relative;
         }
 
-        .dropdown-menu {
-            position: absolute;
-            top: calc(100% + 8px);
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-radius: 16px;
-            border: 1px solid rgba(0, 0, 0, 0.06);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-            min-width: 200px;
+        .mega-menu-container {
+            width: 100%;
+            max-height: 0;
+            overflow: hidden;
             opacity: 0;
-            visibility: hidden;
-            transform: translateX(-50%) translateY(-10px);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: 1001;
-            padding: 8px;
         }
 
-        .nav-item:hover .dropdown-menu {
+        .mega-menu-container.active {
+            max-height: 500px;
             opacity: 1;
-            visibility: visible;
-            transform: translateX(-50%) translateY(0);
+            margin-top: 16px;
+        }
+
+        .dropdown-menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 12px;
+            padding: 0 12px;
         }
 
         .dropdown-item {
             display: flex;
             align-items: center;
             gap: 12px;
-            padding: 12px 16px;
-            border-radius: 10px;
+            padding: 16px;
+            border-radius: 12px;
             text-decoration: none;
             color: var(--text-dark);
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(0, 0, 0, 0.06);
             transition: all 0.2s ease;
         }
 
         .dropdown-item:hover {
-            background: rgba(0, 0, 0, 0.05);
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
         .dropdown-icon {
@@ -211,8 +221,10 @@
             width: 56px;
             height: 56px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(4px) saturate(180%);
+            -webkit-backdrop-filter: blur(4px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(0, 0, 0, 0.08);
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
@@ -234,7 +246,7 @@
         }
 
         .back-to-top:hover {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.4);
             transform: translateY(-4px);
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
         }
@@ -266,6 +278,57 @@
             border: none;
             padding: 8px;
             cursor: pointer;
+            color: var(--text-dark);
+        }
+
+        /* Mobile menu */
+        .nav-links.mobile {
+            display: none;
+            position: fixed;
+            top: 136px;
+            left: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 20px;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            padding: 16px;
+            flex-direction: column;
+            gap: 4px;
+            z-index: 999;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-links.mobile.active {
+            display: flex;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .nav-links.mobile a,
+        .nav-links.mobile button {
+            width: 100%;
+            text-align: left;
+            padding: 12px 16px;
+        }
+
+        .nav-links.mobile .nav-item {
+            width: 100%;
+        }
+
+        .nav-links.mobile .dropdown-menu {
+            position: static;
+            opacity: 1;
+            visibility: visible;
+            transform: none;
+            margin-top: 8px;
+            box-shadow: none;
+            border: none;
+            background: rgba(0, 0, 0, 0.02);
         }
 
         @media (max-width: 768px) {
@@ -276,13 +339,21 @@
             .mobile-menu-toggle {
                 display: block;
             }
+
+            header {
+                top: 20px;
+            }
+
+            .nav-links.mobile {
+                top: 92px;
+            }
         }
 
         /* Container */
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 10px;
         }
 
         /* Hero Section - Full width */
@@ -295,7 +366,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 180px 24px 120px;
+            padding: 180px 10px 120px;
             border-radius: 24px;
         }
 
@@ -303,7 +374,7 @@
             .hero {
                 margin: 10px 10px 0 10px;
                 min-height: 600px;
-                padding: 140px 24px 80px;
+                padding: 140px 10px 80px;
             }
         }
 
@@ -398,7 +469,7 @@
         /* Apps Section - Full width beige background */
         .apps-section {
             margin: 24px 10px;
-            padding: 96px 24px;
+            padding: 96px 10px;
             background: var(--beige);
             border-radius: 24px;
         }
@@ -488,7 +559,7 @@
         /* App Detail Section - Full width white background */
         .app-detail {
             margin: 24px 10px;
-            padding: 96px 24px;
+            padding: 96px 10px;
             background: var(--white);
             border-radius: 24px;
         }
@@ -618,7 +689,7 @@
         /* Highlights Section - Full width gradient background */
         .highlights {
             margin: 24px 10px;
-            padding: 96px 24px;
+            padding: 96px 10px;
             background: linear-gradient(135deg, #ff8c00 0%, #ff6b00 100%);
             border-radius: 24px;
         }
@@ -678,7 +749,7 @@
 
         /* Footer */
         footer {
-            padding: 64px 24px;
+            padding: 64px 10px;
             text-align: center;
             color: var(--text-gray);
             background: var(--beige);
@@ -765,12 +836,47 @@
 <body>
     <!-- Navigation -->
     <header id="navbar">
-        <nav class="nav-container">
-            <div class="logo">
-                <img src="docs/OrangeLabs/OrangeLabs_144x144_alpha.png" alt="OrangeLabs" class="logo-image">
-                OrangeLabs
+        <nav class="nav-container" id="navContainer">
+            <div class="nav-top">
+                <div class="logo">
+                    <img src="docs/OrangeLabs/OrangeLabs_144x144_alpha.png" alt="OrangeLabs" class="logo-image">
+                    OrangeLabs
+                </div>
+                <ul class="nav-links desktop">
+                    <li><a href="#home">首页</a></li>
+                    <li class="nav-item">
+                        <a href="#apps" class="nav-trigger" data-menu="apps">应用</a>
+                    </li>
+                    <li><a href="#contact">联系</a></li>
+                    <li><a href="#pockettutor" class="nav-cta">免费试用</a></li>
+                </ul>
             </div>
-            <ul class="nav-links desktop">
+            <div class="mega-menu-container" id="megaMenuApps">
+                <div class="dropdown-menu">
+                    <a href="#pockettutor" class="dropdown-item">
+                        <img src="docs/PocketTutor/icons/Icon-1024.png" alt="PocketTutor" class="dropdown-icon">
+                        <div class="dropdown-text">
+                            <div class="app-name">PocketTutor</div>
+                            <div class="app-desc">智能听写助手</div>
+                        </div>
+                    </a>
+                    <a href="#" class="dropdown-item">
+                        <div style="width: 40px; height: 40px; border-radius: 10px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; font-size: 20px;" class="dropdown-icon">📱</div>
+                        <div class="dropdown-text">
+                            <div class="app-name">更多应用</div>
+                            <div class="app-desc">敬请期待...</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M4 7L20 7V5L4 5V7Z"/>
+                    <path d="M4 19H20V17H4V19Z"/>
+                    <path d="M4.00049 13.0005H20.0005V11.0005H4.00049V13.0005Z"/>
+                </svg>
+            </button>
+            <ul class="nav-links mobile" id="mobileMenu">
                 <li><a href="#home">首页</a></li>
                 <li class="nav-item">
                     <a href="#apps">应用</a>
@@ -787,13 +893,6 @@
                 <li><a href="#contact">联系</a></li>
                 <li><a href="#pockettutor" class="nav-cta">免费试用</a></li>
             </ul>
-            <button class="mobile-menu-toggle">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M4 7L20 7V5L4 5V7Z"/>
-                    <path d="M4 19H20V17H4V19Z"/>
-                    <path d="M4.00049 13.0005H20.0005V11.0005H4.00049V13.0005Z"/>
-                </svg>
-            </button>
         </nav>
     </header>
 
@@ -1012,6 +1111,72 @@
                     });
                 }
             });
+        });
+
+        // Mobile menu toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuToggle.addEventListener('click', function(e) {
+            e.stopPropagation();
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Mega Menu control
+        const navContainer = document.getElementById('navContainer');
+        const navTriggers = document.querySelectorAll('.nav-trigger');
+        let currentMenu = null;
+        let hideTimeout = null;
+
+        navTriggers.forEach(trigger => {
+            const menuName = trigger.getAttribute('data-menu');
+            const menu = document.getElementById('megaMenu' + menuName.charAt(0).toUpperCase() + menuName.slice(1));
+
+            if (!menu) return;
+
+            trigger.addEventListener('mouseenter', () => {
+                clearTimeout(hideTimeout);
+                
+                // Close other menus
+                if (currentMenu && currentMenu !== menu) {
+                    currentMenu.classList.remove('active');
+                }
+                
+                // Open current menu
+                menu.classList.add('active');
+                navContainer.classList.add('expanded');
+                currentMenu = menu;
+            });
+        });
+
+        // Close menu when mouse leaves nav container
+        navContainer.addEventListener('mouseleave', () => {
+            hideTimeout = setTimeout(() => {
+                if (currentMenu) {
+                    currentMenu.classList.remove('active');
+                    navContainer.classList.remove('expanded');
+                    currentMenu = null;
+                }
+            }, 200);
+        });
+
+        // Keep menu open when hovering over it
+        navContainer.addEventListener('mouseenter', () => {
+            clearTimeout(hideTimeout);
+        });
+
+        // Close mobile menu when clicking on a link
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!mobileMenu.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
+                mobileMenu.classList.remove('active');
+            }
         });
 
         // Intersection Observer for animations
