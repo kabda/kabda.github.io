@@ -47,7 +47,7 @@
             left: 50%;
             transform: translateX(-50%);
             z-index: 1000;
-            width: calc(100% - 48px);
+            width: calc(100% - 40px);
             max-width: 1200px;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -55,7 +55,7 @@
         @media (max-width: 768px) {
             header {
                 top: 56px;
-                width: calc(100% - 32px);
+                width: calc(100% - 40px);
             }
         }
 
@@ -81,7 +81,7 @@
             font-size: 20px;
             font-weight: 700;
             color: var(--text-dark);
-            padding: 8px;
+            padding: 8px 8px 8px 0;
             display: flex;
             align-items: center;
             gap: 8px;
@@ -287,23 +287,23 @@
 
         /* Hero Section - Full width */
         .hero {
-            margin: 20px 20px 0 20px;
-            min-height: 600px;
+            margin: 10px 10px 0 10px;
+            min-height: 700px;
             background: linear-gradient(135deg, #ffdb58 0%, #ff8c00 100%);
             position: relative;
             overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 120px 24px;
+            padding: 180px 24px 120px;
             border-radius: 24px;
         }
 
         @media (max-width: 768px) {
             .hero {
-                margin: 20px 20px 0 20px;
-                min-height: 500px;
-                padding: 80px 24px;
+                margin: 10px 10px 0 10px;
+                min-height: 600px;
+                padding: 140px 24px 80px;
             }
         }
 
@@ -397,7 +397,7 @@
 
         /* Apps Section - Full width beige background */
         .apps-section {
-            margin: 24px 20px;
+            margin: 24px 10px;
             padding: 96px 24px;
             background: var(--beige);
             border-radius: 24px;
@@ -487,7 +487,7 @@
 
         /* App Detail Section - Full width white background */
         .app-detail {
-            margin: 24px 20px;
+            margin: 24px 10px;
             padding: 96px 24px;
             background: var(--white);
             border-radius: 24px;
@@ -617,7 +617,7 @@
 
         /* Highlights Section - Full width gradient background */
         .highlights {
-            margin: 24px 20px;
+            margin: 24px 10px;
             padding: 96px 24px;
             background: linear-gradient(135deg, #ff8c00 0%, #ff6b00 100%);
             border-radius: 24px;
