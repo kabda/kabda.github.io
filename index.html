@@ -754,6 +754,34 @@
             flex-wrap: wrap;
         }
 
+        .detail-qrcode {
+            margin-left: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            flex-shrink: 0;
+        }
+
+        .detail-qrcode img {
+            width: 120px;
+            height: 120px;
+            border-radius: 12px;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            box-shadow: var(--shadow-md);
+        }
+
+        .detail-qrcode span {
+            font-size: 13px;
+            color: var(--text-gray);
+        }
+
+        @media (max-width: 768px) {
+            .detail-qrcode {
+                margin-left: 0;
+            }
+        }
+
         .detail-header .app-icon {
             width: 140px;
             height: 140px;
@@ -1298,6 +1326,10 @@
                             多孩子支持
                         </span>
                     </div>
+                </div>
+                <div class="detail-qrcode">
+                    <img src="docs/PocketTutor/qrcode/ios_appstore.png" alt="扫码下载口袋听写">
+                    <span>扫码下载</span>
                 </div>
             </div>
 
