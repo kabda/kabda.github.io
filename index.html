@@ -981,6 +981,85 @@
             opacity: 0.7;
         }
 
+        /* Footer privacy dropdown */
+        .footer-privacy {
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-privacy-btn {
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 16px;
+            background: none;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            font-family: inherit;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .footer-privacy-btn:hover {
+            color: var(--text-dark);
+        }
+
+        .footer-privacy-btn svg {
+            width: 12px;
+            height: 12px;
+            transition: transform 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        .footer-privacy-btn.open svg {
+            transform: rotate(180deg);
+        }
+
+        .footer-privacy-menu {
+            position: absolute;
+            bottom: calc(100% + 10px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--white);
+            border-radius: 14px;
+            box-shadow: var(--shadow-xl);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            padding: 8px;
+            min-width: 220px;
+            display: none;
+            z-index: 100;
+        }
+
+        .footer-privacy-menu.open {
+            display: block;
+        }
+
+        .footer-privacy-menu a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 14px;
+            transition: background 0.15s ease;
+        }
+
+        .footer-privacy-menu a:hover {
+            background: var(--beige);
+            color: var(--text-dark);
+        }
+
+        .footer-privacy-menu img {
+            width: 28px;
+            height: 28px;
+            border-radius: 7px;
+            box-shadow: var(--shadow-sm);
+        }
+
         /* Animations */
         @keyframes fadeInUp {
             from {
@@ -1416,7 +1495,24 @@
         <div class="footer-links">
             <a href="mailto:report@kabda.cn">问题反馈</a>
             <a href="mailto:report@kabda.cn">合作咨询</a>
-            <a href="pockettutor-privacy-policy.html" target="_blank">隐私政策</a>
+            <div class="footer-privacy">
+                <button class="footer-privacy-btn" id="footerPrivacyBtn">
+                    隐私政策
+                    <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7 10L12 15L17 10H7Z"/>
+                    </svg>
+                </button>
+                <div class="footer-privacy-menu" id="footerPrivacyMenu">
+                    <a href="legal/PocketTutor/privacy-policy.html" target="_blank">
+                        <img src="docs/PocketTutor/icons/Icon-80x80.png" alt="口袋听写">
+                        口袋听写
+                    </a>
+                    <a href="legal/FileSender/privacy-policy.html" target="_blank">
+                        <img src="docs/FileSender/icons/Icon-80x80.png" alt="FileSender">
+                        FileSender
+                    </a>
+                </div>
+            </div>
         </div>
         <p class="copyright">&copy; 2024 OrangeLabs. 让工作更高效，让生活更美好.</p>
         <p style="margin-top: 12px; font-size: 14px;">联系邮箱: report@kabda.cn</p>
@@ -1677,6 +1773,21 @@
             // Initial arrow state update
             updateArrowStates();
         }
+
+        // Footer privacy dropdown
+        const footerPrivacyBtn = document.getElementById('footerPrivacyBtn');
+        const footerPrivacyMenu = document.getElementById('footerPrivacyMenu');
+
+        footerPrivacyBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const isOpen = footerPrivacyMenu.classList.toggle('open');
+            footerPrivacyBtn.classList.toggle('open', isOpen);
+        });
+
+        document.addEventListener('click', function() {
+            footerPrivacyMenu.classList.remove('open');
+            footerPrivacyBtn.classList.remove('open');
+        });
     </script>
 </body>
 </html>
