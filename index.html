@@ -1810,7 +1810,17 @@
                 });
             }
 
-            // Initial arrow state update
+            // Initial scroll: center the carousel
+            // If cards <= 2, show first; if cards > 2, show card at index floor(count/2)
+            const totalCards = appCards.length;
+            const initialIndex = totalCards > 2 ? Math.floor(totalCards / 2) : 0;
+            if (initialIndex > 0) {
+                const cardWidth = appCards[0].offsetWidth + 24;
+                appsGrid.scrollLeft = cardWidth * initialIndex;
+                indicators.forEach((indicator, index) => {
+                    indicator.classList.toggle('active', index === initialIndex);
+                });
+            }
             updateArrowStates();
         }
 
