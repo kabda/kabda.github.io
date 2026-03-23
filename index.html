@@ -1193,6 +1193,13 @@
                             <div class="app-desc">文件传输工具</div>
                         </div>
                     </a>
+                    <a href="#filereceiver" class="dropdown-item">
+                        <img src="docs/FileReceiver/icons/Icon-80x80.png" alt="FileReceiver" class="dropdown-icon">
+                        <div class="dropdown-text">
+                            <div class="app-name">FileReceiver</div>
+                            <div class="app-desc">macOS 接收端</div>
+                        </div>
+                    </a>
                 </div>
             </div>
             <ul class="nav-links mobile" id="mobileMenu">
@@ -1212,6 +1219,13 @@
                             <div class="dropdown-text">
                                 <div class="app-name">FileSender</div>
                                 <div class="app-desc">文件传输工具</div>
+                            </div>
+                        </a>
+                        <a href="#filereceiver" class="dropdown-item">
+                            <img src="docs/FileReceiver/icons/Icon-80x80.png" alt="FileReceiver" class="dropdown-icon">
+                            <div class="dropdown-text">
+                                <div class="app-name">FileReceiver</div>
+                                <div class="app-desc">macOS 接收端</div>
                             </div>
                         </a>
                     </div>
@@ -1274,20 +1288,18 @@
                     <a href="#filesender" class="btn">了解更多</a>
                 </div>
 
-                <!-- Placeholder for future apps -->
-                <div class="app-card" style="opacity: 0.6; cursor: default;" onclick="event.stopPropagation()">
-                    <div style="width: 96px; height: 96px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 22px; margin-bottom: 24px; display: flex; align-items: center; justify-content: center; font-size: 48px; box-shadow: var(--shadow-md);">
-                        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="width: 56px; height: 56px;">
-                            <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.58 20 4 16.42 4 12C4 7.58 7.58 4 12 4C16.42 4 20 7.58 20 12C20 16.42 16.42 20 12 20ZM12 7C11.45 7 11 7.45 11 8V13C11 13.55 11.45 14 12 14C12.55 14 13 13.55 13 13V8C13 7.45 12.55 7 12 7ZM12 15C11.45 15 11 15.45 11 16C11 16.55 11.45 17 12 17C12.55 17 13 16.55 13 16C13 15.45 12.55 15 12 15Z"/>
-                        </svg>
-                    </div>
-                    <h3>即将推出</h3>
-                    <p class="tagline">更多应用正在开发中...</p>
+                <!-- FileReceiver Card -->
+                <div class="app-card" onclick="location.href='#filereceiver'">
+                    <img src="docs/FileReceiver/icons/Icon-192x192.png" alt="FileReceiver" class="app-icon">
+                    <h3>FileReceiver</h3>
+                    <p class="tagline">macOS 文件接收端</p>
                     <ul class="app-features">
-                        <li>持续为家庭打造实用工具</li>
-                        <li>敬请期待</li>
+                        <li>菜单栏应用，轻量运行</li>
+                        <li>扫码即接收，简单便捷</li>
+                        <li>局域网传输，快速安全</li>
+                        <li>自动整理接收的文件</li>
                     </ul>
-                    <button class="btn btn-secondary" disabled style="opacity: 0.5; cursor: not-allowed;">敬请期待</button>
+                    <a href="#filereceiver" class="btn">了解更多</a>
                 </div>
             </div>
             </div>
@@ -1297,6 +1309,95 @@
             <button class="apps-indicator active" data-index="0" aria-label="查看第1个应用"></button>
             <button class="apps-indicator" data-index="1" aria-label="查看第2个应用"></button>
             <button class="apps-indicator" data-index="2" aria-label="查看第3个应用"></button>
+            <button class="apps-indicator" data-index="3" aria-label="查看第4个应用"></button>
+        </div>
+    </section>
+
+    <!-- FileReceiver Detail Section -->
+    <section id="filereceiver" class="app-detail">
+        <div class="detail-container">
+            <div class="detail-header">
+                <img src="docs/FileReceiver/icons/Icon-280x280.png" alt="FileReceiver" class="app-icon">
+                <div class="detail-info">
+                    <h2>FileReceiver</h2>
+                    <p class="tagline">macOS 菜单栏文件接收器，配合 FileSender 手机端使用</p>
+                    <div class="badges">
+                        <span class="badge">
+                            <svg class="icon-svg" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M17 2H7C5.9 2 5 2.9 5 4V20C5 21.1 5.9 22 7 22H17C18.1 22 19 21.1 19 20V4C19 2.9 18.1 2 17 2ZM17 20H7V4H17V20Z"/></svg>
+                            macOS 13.0+
+                        </span>
+                        <span class="badge">
+                            <svg class="icon-svg" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 1L3 5V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V5L12 1ZM16.6 10.89H14.52V16H12.6V10.89H10.54V9.17H16.6V10.89Z"/></svg>
+                            菜单栏应用
+                        </span>
+                        <span class="badge">
+                            <svg class="icon-svg" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M3 3h7v7H3V3zm2 2v3h3V5H5zm7-2h7v7h-7V3zm2 2v3h3V5h-3zM3 13h7v7H3v-7zm2 2v3h3v-3H5zm8-1h2v2h-2v-2zm2 2h2v-2h2v2h-2v2h2v2h-4v-2h-2v2h-2v-4h2z"/></svg>
+                            二维码配对
+                        </span>
+                        <span class="badge">
+                            <svg class="icon-svg" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M21 19V5C21 3.9 20.1 3 19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19ZM8.5 13.5L11 16.51L14.5 12L19 18H5L8.5 13.5Z"/></svg>
+                            照片视频
+                        </span>
+                        <span class="badge">
+                            <svg class="icon-svg" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.58 20 4 16.42 4 12C4 7.58 7.58 4 12 4C16.42 4 20 7.58 20 12C20 16.42 16.42 20 12 20Z"/></svg>
+                            局域网传输
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Core Features -->
+            <h3 style="font-size: 36px; margin-bottom: 32px; text-align: center; font-weight: 700;">核心功能</h3>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <svg class="feature-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17 2H7C5.9 2 5 2.9 5 4V20C5 21.1 5.9 22 7 22H17C18.1 22 19 21.1 19 20V4C19 2.9 18.1 2 17 2ZM17 20H7V4H17V20Z"/>
+                        <path d="M12 6C10.34 6 9 7.34 9 9C9 10.66 10.34 12 12 12C13.66 12 15 10.66 15 9C15 7.34 13.66 6 12 6ZM12 10C11.45 10 11 9.55 11 9C11 8.45 11.45 8 12 8C12.55 8 13 8.45 13 9C13 9.55 12.55 10 12 10Z"/>
+                    </svg>
+                    <h3>菜单栏应用</h3>
+                    <p>常驻 macOS 菜单栏，点击即可显示二维码，不占用 Dock 栏，最小化系统资源占用。</p>
+                </div>
+
+                <div class="feature-card">
+                    <svg class="feature-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 3h7v7H3V3zm2 2v3h3V5H5zm7-2h7v7h-7V3zm2 2v3h3V5h-3zM3 13h7v7H3v-7zm2 2v3h3v-3H5z"/>
+                    </svg>
+                    <h3>二维码配对</h3>
+                    <p>自动生成连接二维码，手机端扫码即可建立连接，无需手动输入 IP 地址或端口。</p>
+                </div>
+
+                <div class="feature-card">
+                    <svg class="feature-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M8 19h3v3h2v-3h3l-4-4-4 4zm8-15h-3V1h-2v3H8l4 4 4-4zM4 11v2h16v-2H4z"/>
+                    </svg>
+                    <h3>智能文件接收</h3>
+                    <p>自动接收来自 FileSender 的照片和视频，显示传输进度，接收完成后自动整理文件。</p>
+                </div>
+
+                <div class="feature-card">
+                    <svg class="feature-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 1L3 5V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V5L12 1ZM10 17L6 13L7.41 11.59L10 14.17L16.59 7.58L18 9L10 17Z"/>
+                    </svg>
+                    <h3>隐私安全</h3>
+                    <p>局域网点对点传输，文件不经过云端服务器，安全快速，临时文件自动清理。</p>
+                </div>
+            </div>
+
+            <!-- Screenshots -->
+            <div class="screenshots">
+                <h3>应用展示</h3>
+                <div class="screenshots-grid">
+                    <div class="screenshot-item">
+                        <img src="docs/FileReceiver/screenshots/1.png" alt="FileReceiver 菜单栏">
+                    </div>
+                    <div class="screenshot-item">
+                        <img src="docs/FileReceiver/screenshots/2.png" alt="FileReceiver 接收中">
+                    </div>
+                    <div class="screenshot-item">
+                        <img src="docs/FileReceiver/screenshots/3.png" alt="FileReceiver 接收完成">
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
