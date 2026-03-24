@@ -776,8 +776,23 @@
             color: var(--text-gray);
         }
 
+        .detail-qrcodes {
+            margin-left: auto;
+            display: flex;
+            gap: 24px;
+            flex-shrink: 0;
+        }
+
+        .detail-qrcodes .detail-qrcode {
+            margin-left: 0;
+        }
+
         @media (max-width: 768px) {
             .detail-qrcode {
+                margin-left: 0;
+            }
+
+            .detail-qrcodes {
                 margin-left: 0;
             }
         }
@@ -1453,9 +1468,15 @@
                         </span>
                     </div>
                 </div>
-                <div class="detail-qrcode">
-                    <img src="docs/FileSender/qrcode/android_download.png" alt="扫码下载 FileSender Android 版">
-                    <span>Android 扫码下载</span>
+                <div class="detail-qrcodes">
+                    <div class="detail-qrcode">
+                        <img src="docs/FileSender/qrcode/ios_download.png" alt="扫码下载 FileSender iOS 版">
+                        <span>iOS 扫码下载</span>
+                    </div>
+                    <div class="detail-qrcode">
+                        <img src="docs/FileSender/qrcode/android_download.png" alt="扫码下载 FileSender Android 版">
+                        <span>Android 扫码下载</span>
+                    </div>
                 </div>
             </div>
 
