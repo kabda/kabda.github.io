@@ -1215,6 +1215,13 @@
                             <div class="app-desc">macOS 接收端</div>
                         </div>
                     </a>
+                    <a href="#lateleave" class="dropdown-item">
+                        <img src="docs/LateLeave/icons/Icon-80x80.png" alt="LateLeave" class="dropdown-icon">
+                        <div class="dropdown-text">
+                            <div class="app-name">LateLeave</div>
+                            <div class="app-desc">加班补贴统计</div>
+                        </div>
+                    </a>
                 </div>
             </div>
             <ul class="nav-links mobile" id="mobileMenu">
@@ -1241,6 +1248,13 @@
                             <div class="dropdown-text">
                                 <div class="app-name">FileReceiver</div>
                                 <div class="app-desc">macOS 接收端</div>
+                            </div>
+                        </a>
+                        <a href="#lateleave" class="dropdown-item">
+                            <img src="docs/LateLeave/icons/Icon-80x80.png" alt="LateLeave" class="dropdown-icon">
+                            <div class="dropdown-text">
+                                <div class="app-name">LateLeave</div>
+                                <div class="app-desc">加班补贴统计</div>
                             </div>
                         </a>
                     </div>
@@ -1317,6 +1331,20 @@
                     <a href="#filereceiver" class="btn">了解更多</a>
                 </div>
 
+                <!-- LateLeave Card -->
+                <div class="app-card" onclick="location.href='#lateleave'">
+                    <img src="docs/LateLeave/icons/Icon-192x192.png" alt="LateLeave" class="app-icon">
+                    <h3>LateLeave</h3>
+                    <p class="tagline">macOS 加班补贴统计工具</p>
+                    <ul class="app-features">
+                        <li>菜单栏轻量运行，自动记录关键状态</li>
+                        <li>公司 Wi-Fi 白名单，规则清晰可控</li>
+                        <li>本机判定加班结果，支持手工修正</li>
+                        <li>月度统计导出，补贴金额一目了然</li>
+                    </ul>
+                    <a href="#lateleave" class="btn">了解更多</a>
+                </div>
+
                 <!-- Placeholder for future apps -->
                 <div class="app-card" style="opacity: 0.6; cursor: default;" onclick="event.stopPropagation()">
                     <div style="width: 96px; height: 96px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 22px; margin-bottom: 24px; display: flex; align-items: center; justify-content: center; font-size: 48px; box-shadow: var(--shadow-md);">
@@ -1341,6 +1369,7 @@
             <button class="apps-indicator" data-index="1" aria-label="查看第2个应用"></button>
             <button class="apps-indicator" data-index="2" aria-label="查看第3个应用"></button>
             <button class="apps-indicator" data-index="3" aria-label="查看第4个应用"></button>
+            <button class="apps-indicator" data-index="4" aria-label="查看第5个应用"></button>
         </div>
     </section>
 
@@ -1632,6 +1661,77 @@
         </div>
     </section>
 
+    <!-- LateLeave Detail Section -->
+    <section id="lateleave" class="app-detail">
+        <div class="detail-container">
+            <div class="detail-header">
+                <img src="docs/LateLeave/icons/Icon-280x280.png" alt="LateLeave" class="app-icon">
+                <div class="detail-info">
+                    <h2>LateLeave</h2>
+                    <p class="tagline">macOS 菜单栏加班补贴统计工具，帮助你在本机记录、复核和导出个人加班情况</p>
+                    <div class="badges">
+                        <span class="badge">
+                            <svg class="icon-svg" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M20 18C21.1 18 21.99 17.1 21.99 16L22 6C22 4.9 21.1 4 20 4H4C2.9 4 2 4.9 2 6V16C2 17.1 2.9 18 4 18H0V20H24V18H20ZM4 6H20V16H4V6Z"/></svg>
+                            macOS 菜单栏
+                        </span>
+                        <span class="badge">
+                            <svg class="icon-svg" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M12 1L3 5V11C3 16.55 6.84 21.74 12 23C17.16 21.74 21 16.55 21 11V5L12 1ZM10 17L6 13L7.41 11.59L10 14.17L16.59 7.58L18 9L10 17Z"/></svg>
+                            本地优先
+                        </span>
+                        <span class="badge">
+                            <svg class="icon-svg" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M1 9L3 11C7.97 6.03 16.03 6.03 21 11L23 9C16.93 2.93 7.08 2.93 1 9ZM9 17L12 20L15 17C13.35 15.66 10.66 15.66 9 17ZM5 13L7 15C9.76 12.24 14.24 12.24 17 15L19 13C15.14 9.14 8.87 9.14 5 13Z"/></svg>
+                            Wi-Fi 白名单
+                        </span>
+                        <span class="badge">
+                            <svg class="icon-svg" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M19 3H18V1H16V3H8V1H6V3H5C3.89 3 3.01 3.9 3.01 5L3 19C3 20.1 3.89 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM19 19H5V8H19V19ZM7 10H12V15H7V10Z"/></svg>
+                            月度统计
+                        </span>
+                    </div>
+                </div>
+                <div class="detail-qrcode">
+                    <img src="docs/LateLeave/qrcode/ios_appstore.png" alt="扫码下载 LateLeave">
+                    <span>扫码下载</span>
+                </div>
+            </div>
+
+            <!-- Core Features -->
+            <h3 style="font-size: 36px; margin-bottom: 32px; text-align: center; font-weight: 700;">核心功能</h3>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <svg class="feature-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12.5 7H11V13L16.25 16.15L17 14.92L12.5 12.25V7Z"/>
+                    </svg>
+                    <h3>自动记录关键状态</h3>
+                    <p>在加班起算时间后记录 Wi-Fi、键鼠活动、会议应用前台、锁屏、睡眠和唤醒等事件事实，减少手工回忆成本。</p>
+                </div>
+
+                <div class="feature-card">
+                    <svg class="feature-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 3C8.14 3 5 6.14 5 10C5 15.25 12 22 12 22C12 22 19 15.25 19 10C19 6.14 15.86 3 12 3ZM12 12.5C10.62 12.5 9.5 11.38 9.5 10C9.5 8.62 10.62 7.5 12 7.5C13.38 7.5 14.5 8.62 14.5 10C14.5 11.38 13.38 12.5 12 12.5Z"/>
+                    </svg>
+                    <h3>公司 Wi-Fi 白名单</h3>
+                    <p>通过你配置的公司 Wi-Fi SSID 判断办公网络条件，不使用 GPS 精确定位，规则来源清楚、结果可复核。</p>
+                </div>
+
+                <div class="feature-card">
+                    <svg class="feature-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 16.17L4.83 12L3.41 13.41L9 19L21 7L19.59 5.59L9 16.17Z"/>
+                    </svg>
+                    <h3>本机判定与手工修正</h3>
+                    <p>基于时间、网络和有效人工活跃行为在本机生成每日结果，并允许你对边界场景进行确认、修正和备注。</p>
+                </div>
+
+                <div class="feature-card">
+                    <svg class="feature-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM8 17H6V10H8V17ZM13 17H11V7H13V17ZM18 17H16V13H18V17Z"/>
+                    </svg>
+                    <h3>月度统计与导出</h3>
+                    <p>按自然月汇总加班天数和预计补贴金额，支持导出 CSV、Markdown 或纯文本文件，方便个人留档和核对。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Highlights Section -->
     <section class="highlights">
         <div class="highlights-container">
@@ -1696,6 +1796,10 @@
                     <a href="legal/FileReceiver/privacy-policy.html" target="_blank">
                         <img src="docs/FileReceiver/icons/Icon-80x80.png" alt="FileReceiver">
                         FileReceiver
+                    </a>
+                    <a href="legal/LateLeave/privacy-policy.html" target="_blank">
+                        <img src="docs/LateLeave/icons/Icon-80x80.png" alt="LateLeave">
+                        LateLeave
                     </a>
                 </div>
             </div>
