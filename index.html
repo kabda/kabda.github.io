@@ -899,6 +899,12 @@
             gap: 24px;
         }
 
+        .screenshots-grid.two-up {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            max-width: 1120px;
+            margin: 0 auto;
+        }
+
         .screenshot-item {
             border-radius: 16px;
             overflow: hidden;
@@ -1152,6 +1158,10 @@
 
         @media (max-width: 480px) {
             .screenshots-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .screenshots-grid.two-up {
                 grid-template-columns: 1fr;
             }
 
@@ -1733,7 +1743,7 @@
             <!-- Screenshots -->
             <div class="screenshots">
                 <h3>应用展示</h3>
-                <div class="screenshots-grid">
+                <div class="screenshots-grid two-up">
                     <div class="screenshot-item">
                         <img src="docs/LateLeave/screenshots/1.png" alt="LateLeave 截图 1">
                     </div>
