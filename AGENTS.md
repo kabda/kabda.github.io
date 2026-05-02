@@ -41,3 +41,12 @@ Since these are static HTML files, they can be:
 - Served via GitHub Pages
 - Uploaded to CDN or cloud storage with public access
 - Embedded in app webviews
+
+
+<claude-mem-context>
+# Memory Context
+
+# [kabda.github.io] recent context, 2026-05-02 6:05pm GMT+8
+
+No previous sessions found.
+</claude-mem-context>
