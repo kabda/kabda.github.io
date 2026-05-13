@@ -107,11 +107,11 @@
         <h1>隐私政策</h1>
         <div class="meta">
             <p>生效日期：2026 年 3 月 15 日</p>
-            <p>更新日期：2026 年 3 月 15 日</p>
+            <p>更新日期：2026 年 5 月 13 日</p>
         </div>
 
         <div class="highlight">
-            <p><strong>重要提示</strong>：FileSender（以下简称"本应用"）是一款专注于本地网络文件传输的工具应用，<strong>不收集、不存储、不上传任何用户个人信息</strong>。所有文件传输均在用户设备与 Mac 电脑之间通过局域网直接进行，不经过任何云端服务器。</p>
+            <p><strong>重要提示</strong>：FileSender（以下简称"本应用"）是一款专注于本地网络文件传输的工具应用，支持 iOS、Android 和 HarmonyOS 设备作为发送端使用，<strong>不收集、不存储、不上传任何用户个人信息</strong>。所有文件传输均在用户设备与接收端设备（如 Mac 电脑）之间通过局域网直接进行，不经过任何云端服务器。</p>
         </div>
 
         <h2>一、引言</h2>
@@ -125,18 +125,18 @@
         <p>请您仔细阅读本政策。使用本应用即表示您同意本政策的内容。如您不同意本政策，请停止使用本应用。</p>
 
         <h2>二、应用功能说明</h2>
-        <p>FileSender 是一款<strong>手机到 Mac 的单向文件传输工具</strong>，核心功能包括：</p>
+        <p>FileSender 是一款<strong>移动端到接收端设备的单向文件传输工具</strong>，目前支持 iOS、Android 和 HarmonyOS 三端发送应用，核心功能包括：</p>
         <ol>
-            <li><strong>文件选择</strong>：从手机相册选择图片和视频文件</li>
+            <li><strong>文件选择</strong>：从设备相册或媒体库选择图片和视频文件</li>
             <li><strong>文件压缩</strong>：在设备本地对选中的文件进行压缩处理</li>
-            <li><strong>二维码扫描</strong>：扫描 Mac 端生成的连接二维码</li>
-            <li><strong>局域网传输</strong>：通过本地网络将文件直接传输到 Mac 电脑</li>
+            <li><strong>二维码扫描</strong>：扫描接收端设备生成的连接二维码</li>
+            <li><strong>局域网传输</strong>：通过本地网络将文件直接传输到接收端设备</li>
             <li><strong>临时文件清理</strong>：传输完成后自动清理压缩缓存</li>
         </ol>
         <p><strong>重要特性</strong>：</p>
         <ul>
             <li>所有传输均为<strong>一次性会话</strong>，传输完成后不保留任何连接记录</li>
-            <li>文件传输<strong>不经过云端</strong>，仅在您的手机和 Mac 之间直接传输</li>
+            <li>文件传输<strong>不经过云端</strong>，仅在您的发送设备和接收端设备之间直接传输</li>
             <li>应用<strong>不存储任何文件内容</strong>，压缩文件仅临时存储于系统缓存目录</li>
         </ul>
 
@@ -155,34 +155,37 @@
         <h2>四、系统权限说明</h2>
         <p>为实现文件传输功能，本应用需要申请以下系统权限。<strong>所有权限仅在您明确授权后使用，且仅用于实现对应功能</strong>：</p>
 
-        <h3>4.1 相册访问权限（必需）</h3>
+        <h3>4.1 相册或媒体访问权限（必需）</h3>
         <p><strong>权限名称</strong>：</p>
         <ul>
             <li>iOS：照片库访问权限（NSPhotoLibraryUsageDescription）</li>
-            <li>Android：读取媒体图片和视频权限（READ_MEDIA_IMAGES、READ_MEDIA_VIDEO）</li>
+            <li>Android：系统照片/视频选择器授权；如相关 Android 版本或系统要求，可能涉及媒体读取权限（READ_MEDIA_IMAGES、READ_MEDIA_VIDEO）</li>
+            <li>HarmonyOS：读取图片和视频权限（ohos.permission.READ_IMAGEVIDEO）</li>
         </ul>
         <p><strong>用途</strong>：允许您从相册中选择要传输的图片和视频文件。</p>
         <p><strong>使用场景</strong>：仅在您点击"选择文件"功能时调用系统相册选择器。</p>
-        <p><strong>数据处理</strong>：选中的文件仅用于压缩和传输，不会被上传到任何服务器，传输完成后压缩缓存会被自动清理。</p>
+        <p><strong>数据处理</strong>：应用仅处理您主动选择的文件，不会扫描整个相册或媒体库。选中的文件仅用于本地压缩和传输，不会被上传到任何服务器，传输完成后压缩缓存会被自动清理。</p>
 
         <h3>4.2 相机权限（必需）</h3>
         <p><strong>权限名称</strong>：</p>
         <ul>
             <li>iOS：相机使用权限（NSCameraUsageDescription）</li>
             <li>Android：相机权限（CAMERA）</li>
+            <li>HarmonyOS：相机权限（ohos.permission.CAMERA）</li>
         </ul>
-        <p><strong>用途</strong>：用于扫描 Mac 端生成的连接二维码。</p>
+        <p><strong>用途</strong>：用于扫描接收端设备生成的连接二维码。</p>
         <p><strong>使用场景</strong>：仅在您进入"扫描二维码"页面时启用相机。</p>
-        <p><strong>数据处理</strong>：相机仅用于识别二维码中的连接信息（Mac 的局域网地址和临时 token），不会拍摄或保存任何照片。</p>
+        <p><strong>数据处理</strong>：相机仅用于识别二维码中的连接信息（接收端设备的局域网地址和临时 token），不会拍摄或保存任何照片。</p>
 
         <h3>4.3 本地网络访问权限（必需）</h3>
         <p><strong>权限名称</strong>：</p>
         <ul>
             <li>iOS：本地网络使用权限（NSLocalNetworkUsageDescription）</li>
             <li>Android：互联网权限（INTERNET）</li>
+            <li>HarmonyOS：网络访问权限（ohos.permission.INTERNET）</li>
         </ul>
-        <p><strong>用途</strong>：允许应用通过局域网连接到您的 Mac 电脑进行文件传输。</p>
-        <p><strong>使用场景</strong>：仅在您扫描二维码并确认传输后，建立与 Mac 的局域网连接。</p>
+        <p><strong>用途</strong>：允许应用通过局域网连接到您的接收端设备进行文件传输。</p>
+        <p><strong>使用场景</strong>：仅在您扫描二维码并确认传输后，建立与接收端设备的局域网连接。</p>
         <p><strong>数据处理</strong>：</p>
         <ul>
             <li>连接仅限于您的本地网络（Wi-Fi），不会访问互联网</li>
@@ -194,7 +197,7 @@
         <p><strong>用途</strong>：在设备临时目录存储压缩后的文件，用于传输。</p>
         <p><strong>数据处理</strong>：</p>
         <ul>
-            <li>压缩文件存储在系统临时目录（iOS：NSTemporaryDirectory，Android：getCacheDir）</li>
+            <li>压缩文件存储在系统临时目录或应用缓存目录（iOS：NSTemporaryDirectory，Android：getCacheDir，HarmonyOS：应用 cacheDir）</li>
             <li>传输完成后自动清理所有临时文件</li>
             <li>不会在设备上保留任何传输记录或文件副本</li>
         </ul>
@@ -204,7 +207,7 @@
 
         <h3>5.1 本地处理</h3>
         <ul>
-            <li>文件压缩完全在您的设备本地进行，不上传到任何服务器</li>
+            <li>iOS、Android 和 HarmonyOS 发送端的文件压缩均在您的设备本地进行，不上传到任何服务器</li>
             <li>应用不会读取或分析您的文件内容</li>
         </ul>
 
@@ -270,9 +273,9 @@
         <h2>十一、适用范围</h2>
         <p>本政策适用于 FileSender App 的所有版本和功能。本政策不适用于：</p>
         <ul>
-            <li>Apple App Store 或 Google Play Store 的服务，其隐私保护请参阅相应平台的隐私政策</li>
+            <li>Apple App Store、Google Play Store、华为应用市场或其他应用分发平台的服务，其隐私保护请参阅相应平台的隐私政策</li>
             <li>您的 Mac 电脑上运行的接收端应用，该应用有独立的隐私政策</li>
-            <li>您的设备操作系统（iOS/Android）的隐私设置和数据处理</li>
+            <li>您的设备操作系统（iOS/Android/HarmonyOS）的隐私设置和数据处理</li>
         </ul>
 
         <div class="highlight" style="margin-top: 32px;">
